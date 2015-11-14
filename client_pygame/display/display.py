@@ -211,6 +211,8 @@ class Display(BaseDisplay):
         """
         rect = self.obj_to_rect(obj)
         pygame.draw.rect(surface, self.wall_color, rect)
+        file_path = os.path.join('display', 'images',)
+
         return
         
     def paint_npc(self, surface, engine, control, obj):
