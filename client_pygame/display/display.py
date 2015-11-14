@@ -90,8 +90,8 @@ class Display(BaseDisplay):
         # There are other fonts available, but they are not
         # the same on every computer.  You can read more about
         # fonts at http://www.pygame.org/docs/ref/font.html
-        self.font_size = 12
-        self.font = pygame.font.SysFont("Courier New",self.font_size)
+        self.font_size = 25
+        self.font = pygame.font.SysFont("Futura",self.font_size)
 
         # Colors are specified as a triple of integers from 0 to 255.
         # The values are how much red, green, and blue to use in the color.
