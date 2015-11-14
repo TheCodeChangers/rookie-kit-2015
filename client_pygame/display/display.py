@@ -233,11 +233,9 @@ class Display(BaseDisplay):
                 image = pygame.image.load(file_path)
                 surface.blit(image, rect)
             else:
-                color = self.opponent_color
-                pygame.draw.rect(surface, color, rect)
-                (x, y) = obj.get_center()
-                x = int( round(x) )
-                y = int( round(y) )
+                file_path = os.path.join('display', 'images', 'enemy1.png')
+                image = pygame.image.load(file_path)
+                surface.blit(image, rect)
                 
         return
 
