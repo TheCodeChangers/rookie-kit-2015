@@ -100,8 +100,8 @@ class Display(BaseDisplay):
         self.player_color     = (0, 255, 0)
         self.opponent_color   = (255, 0, 0)
         self.missile_color    = (0, 255, 255)
-        self.npc_color        = (100, 70, 42)
-        self.wall_color       = (255, 255, 255)
+        self.npc_color        = (100, 100, 100)
+        self.wall_color       = (150, 75, 0)
         self.text_color       = (255, 255, 255)
         self.background_color = (40, 199, 15)
         return
