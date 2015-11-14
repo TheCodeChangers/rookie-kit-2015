@@ -94,7 +94,7 @@ class Control(BaseControl):
         user to press 'd' for dual, 's' for single player game, 't' for tournament.
         """
 
-        if pygame.K_d in newkeys:
+        if pygame.K_m in newkeys:
             self.set_state(CONTROL_STATE_WANT_DUAL)
         elif pygame.K_s in newkeys:
             self.set_state(CONTROL_STATE_WANT_SINGLE)

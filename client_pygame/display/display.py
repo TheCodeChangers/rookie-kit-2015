@@ -114,7 +114,7 @@ class Display(BaseDisplay):
         rect = pygame.Rect(0, 0, self.width, self.height)
         surface.fill(self.background_color, rect)
         # text message in center of screen
-        s = "Press 'd' for dual player, 's' for single player,"
+        s = "Press 'm' for multi player, 's' for single player,"
         self.draw_text_center(surface, s, self.text_color,
                               self.width/2, self.height/2,
                               self.font)
