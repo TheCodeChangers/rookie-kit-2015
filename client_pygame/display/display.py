@@ -240,8 +240,6 @@ class Display(BaseDisplay):
                 y = int( round(y) )
                 missle_range = int( round(obj.get_missile_range()) )
                 pygame.draw.circle(surface, color, (x,y), missle_range, 1)
-                file_path = os.path.join('display', 'images', 'Rocket.png')
-                image = pygame.image.load(file_path)
         return
 
     def paint_game_status(self, surface, engine, control):
