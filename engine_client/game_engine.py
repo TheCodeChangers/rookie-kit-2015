@@ -18,7 +18,7 @@
 #    set_player_speed_stop() stop moving
 #    set_player_speed_slow() move slowly, if enough mana
 #    set_player_speed_medium() move medium, if enough mana, and enough experience
-#    set_player_speed_fast() move fast, if enough mana, and enough experience
+#    set_splayer_speed_fast() move fast, if enough mana, and enough experience
 #  Movement direction:
 #    set_player_direction(degrees) specify the direction to move, when you are not stopped
 #  Missile range:

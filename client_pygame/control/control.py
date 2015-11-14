@@ -113,7 +113,16 @@ class Control(BaseControl):
         to make changes to the game engine based on the
         user input.
         """
-        
+        def go(self):
+            if False == hasattr(self, 'go_speed') or self.go_speed == 'slow':
+                engine.set_player_speed_slow()
+            elif self.go_speed == 'medium':
+                engine.set_player_speed_medium()
+            elif self.go_speed == 'fast':
+                engine.set_player_speed_fast()
+            else:
+                engine.set_player_speed_slow()
+
         (mouse_x, mouse_y) = mouse_position
 
         if False == hasattr(self, 'current_key'):
@@ -124,38 +133,38 @@ class Control(BaseControl):
             engine.set_missile_direction(270)
             self.player_image = 'shooter2.png'
             self.current_key = pygame.K_UP
-            engine.set_player_speed_slow()
+            go(self)
         elif pygame.K_DOWN in newkeys:
             engine.set_player_direction(90)
             engine.set_missile_direction(90)
             self.player_image = 'shooter1.png'
             self.current_key = pygame.K_DOWN
-            engine.set_player_speed_slow()
+            go(self)
         elif pygame.K_LEFT in newkeys:
             engine.set_player_direction(180)
             engine.set_missile_direction(180)
             self.player_image = 'shooter4.png'
             self.current_key = pygame.K_LEFT
-            engine.set_player_speed_slow()
+            go(self)
         elif pygame.K_RIGHT in newkeys:
             engine.set_player_direction(0)
             engine.set_missile_direction(0)
             self.player_image = 'shooter3.png'
             self.current_key = pygame.K_RIGHT
-            engine.set_player_speed_slow()
+            go(self)
 
         if pygame.K_UP in keys and pygame.K_LEFT in keys:
             engine.set_player_direction(225)
             engine.set_missile_direction(225)
         elif pygame.K_UP in keys and pygame.K_RIGHT in keys:
-                engine.set_player_direction(315)
-                engine.set_missile_direction(315)
+            engine.set_player_direction(315)
+            engine.set_missile_direction(315)
         elif pygame.K_DOWN in keys and pygame.K_LEFT in keys:
-                engine.set_player_direction(135)
-                engine.set_missile_direction(135)
+            engine.set_player_direction(135)
+            engine.set_missile_direction(135)
         elif pygame.K_DOWN in keys and pygame.K_RIGHT in keys:
-                engine.set_player_direction(45)
-                engine.set_missile_direction(45)
+            engine.set_player_direction(45)
+            engine.set_missile_direction(45)
         if pygame.K_c in newkeys:
             self.background_color = (randint(0,255), randint(0,255), randint(0,255))
 

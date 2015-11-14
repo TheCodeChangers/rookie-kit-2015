@@ -28,7 +28,7 @@ class PygameClient(PygameSocketGame):
         #pygame.mixer.music('display/sounds/background.wav')
         #pygame.mixer.music.play()
         sound_path = os.path.join('display', 'sounds', 'bac2.wav')
-        pygame.mixer.Sound(sound_path).play()
+        pygame.mixer.Sound(sound_path).play(-1)
         return
     
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):

@@ -235,8 +235,62 @@ class Display(BaseDisplay):
             health = health.ljust(10)
             health = '|' + health + '|'
         else:
-            health = 'XP DROP!'
-
+            oid = engine.get_player_oid()
+            if oid > 0: 
+                me = engine.get_object(oid)
+                if me:
+                    if me.get_experience() >= (15 * HEALTH_NPC):
+                        health = 'MAX POWER!!!! :P'
+                    # XP_LEVEL_MISSILE_MANA_RECHARGE_FAST = 14
+                    elif me.get_experience() >= (14 * HEALTH_NPC):
+                        health = 'Fast Missle Recharge UNLOCKED!!'
+                    # XP_LEVEL_MOVE_MANA_RECHARGE_FAST = 13
+                    elif me.get_experience() >= (13 * HEALTH_NPC):
+                        health = 'Fast Mana Recharge UNLOCKED!!'
+                    # XP_LEVEL_POWER_HIGH   = 12
+                    elif me.get_experience() >= (12 * HEALTH_NPC):
+                        health = 'High Missile Power UNLOCKED!!'
+                        engine.set_missile_power_high()
+                    # XP_LEVEL_MOVE_MANA_HIGH = 11
+                    elif me.get_experience() >= (11 * HEALTH_NPC):
+                        health = 'High Move Mana UNLOCKED!!'
+                    # XP_LEVEL_RANGE_LONG   = 10
+                    elif me.get_experience() >= (10 * HEALTH_NPC):
+                        health = 'Long Range UNLOCKED!!'
+                        engine.set_missile_range_long()
+                    # XP_LEVEL_MISSILE_MANA_HIGH = 9
+                    elif me.get_experience() >= (9 * HEALTH_NPC):
+                        health = 'High Missile Mana UNLOCKED!!'
+                    # XP_LEVEL_SPEED_FAST   = 8
+                    elif me.get_experience() >= (8 * HEALTH_NPC):
+                        health = 'Fast Speed UNLOCKED!!'
+                        engine.set_player_speed_fast()
+                        self.go_speed = 'fast'
+                    # XP_LEVEL_MISSILE_MANA_RECHARGE_MEDIUM = 7
+                    elif me.get_experience() >= (7 * HEALTH_NPC):
+                        health = 'Medium Missile Recharge Mana UNLOCKED!!'
+                    # XP_LEVEL_MOVE_MANA_RECHARGE_MEDIUM = 6
+                    elif me.get_experience() >= (6 * HEALTH_NPC):
+                        health = 'Medium Recharge Mana UNLOCKED!!'
+                    # XP_LEVEL_POWER_MEDIUM = 5
+                    elif me.get_experience() >= (5 * HEALTH_NPC):
+                        health = 'Medium Missile Power UNLOCKED!!'
+                        engine.set_missile_power_medium()
+                    # XP_LEVEL_MOVE_MANA_MEDIUM = 4
+                    elif me.get_experience() >= (4 * HEALTH_NPC):
+                        health = 'Medium Move Mana UNLOCKED!!'
+                    # XP_LEVEL_RANGE_MEDIUM = 3
+                    elif me.get_experience() >= (3 * HEALTH_NPC):
+                        health = 'Medium Range UNLOCKED!!'
+                        engine.set_missile_range_medium()
+                    # XP_LEVEL_MISSILE_MANA_MEDIUM = 2
+                    elif me.get_experience() >= (2 * HEALTH_NPC):
+                        health = 'Medium Missile Mana UNLOCKED!!'                        
+                    # XP_LEVEL_SPEED_MEDIUM = 1
+                    else:
+                        health = 'Medium Speed UNLOCKED!!'
+                        engine.set_player_speed_medium()
+                        self.go_speed = 'medium'
         self.draw_text_center(surface, health, (200, 0, 0),
                               obj.get_x() + 2, obj.get_y() + 3.5,
                               self.font)
