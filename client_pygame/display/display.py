@@ -4,6 +4,7 @@
 #
 import os
 import pygame
+import math
 from config import *
 from common.event import *
 from client.base_display import BaseDisplay
@@ -317,6 +318,13 @@ class Display(BaseDisplay):
         Draws living players.
         My player is my opponent are in different colors
         """
+        missile_count = int(math.floor(obj.get_missile_mana()))
+        missiles = ''
+        missiles = missiles.ljust(missile_count, '>')
+        self.draw_text_center(surface, missiles, (0, 0, 200),
+                              obj.get_x() + 40, obj.get_y(),
+                              self.font)
+
         pct = (obj.get_health() / obj.get_max_health()) * 10
         pct = int(round(pct))
         health = ''
@@ -324,7 +332,7 @@ class Display(BaseDisplay):
         health = health.ljust(10)
         health = '|' + health + '|'
         self.draw_text_center(surface, health, (200, 0, 0),
-                              obj.get_x() + 2, obj.get_y() + 3.5,
+                              obj.get_x() + 40, obj.get_y() - self.font_size,
                               self.font)
         if obj.is_alive():
             rect = self.obj_to_rect(obj)
