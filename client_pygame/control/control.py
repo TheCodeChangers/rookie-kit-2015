@@ -2,7 +2,7 @@
 # This file is where you will control your player.
 # Make changes and add functions as you need.
 #
-
+import math
 import pygame
 import sys, os
 from client.base_control import *
@@ -191,7 +191,7 @@ class Control(BaseControl):
         elif pygame.K_s in newkeys:
             engine.set_missile_power_low()
                 
-        if pygame.K_SPACE in newkeys:
+        if pygame.K_SPACE in newkeys or 1 in newbuttons:
             engine.fire_missile()
             sound = pygame.mixer.Sound(os.path.join ("display", "sounds", "laser.wav"))
             sound.play()
@@ -201,6 +201,18 @@ class Control(BaseControl):
             sound.play()
             self.show_info = not self.show_info
 
+        oid = engine.get_player_oid()
+        if oid > 0: 
+            player = engine.get_object(oid)
+            if player:
+                (x1,y1) = player.get_center()
+                (x2,y2) = mouse_position
+                dx = x2-x1
+                dy = y2-y1
+                radians = math.atan2(dy, dx)
+                radians %= 2*math.pi
+                degrees = math.degrees(radians)
+                engine.set_missile_direction(degrees)
         return
         
     def game_control(self, engine):
