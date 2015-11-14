@@ -225,6 +225,16 @@ class Display(BaseDisplay):
             file_path = os.path.join('display', 'images', npcpng)
             image = pygame.image.load(file_path)
             surface.blit(image, rect)
+
+        pct = (obj.get_health() / obj.get_max_health()) * 10
+        pct = int(round(pct))
+        health = ''
+        health = health.ljust(pct, '@')
+        health = health.ljust(10)
+        health = '|' + health + '|'
+        self.draw_text_center(surface, health, self.text_color,
+                              obj.get_x() + 2, obj.get_y() + 3.5,
+                              self.font)
         return
         
     def paint_missile(self, surface, engine, control, obj):
@@ -245,7 +255,15 @@ class Display(BaseDisplay):
         Draws living players.
         My player is my opponent are in different colors
         """
-        
+        pct = (obj.get_health() / obj.get_max_health()) * 10
+        pct = int(round(pct))
+        health = ''
+        health = health.ljust(pct, '+')
+        health = health.ljust(10)
+        health = '|' + health + '|'
+        self.draw_text_center(surface, health, self.text_color,
+                              obj.get_x() + 2, obj.get_y() + 3.5,
+                              self.font)
         if obj.is_alive():
             rect = self.obj_to_rect(obj)
             if obj.get_oid() == engine.get_player_oid():
