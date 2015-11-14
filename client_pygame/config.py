@@ -15,7 +15,7 @@ DEFAULT_TEAM_NAME  = "Shooter Man"
 # the screen every second.  If your computer is slow, then
 # you may want to make this smaller.  If you have a fast
 # computer, you can try to make this larger.
-FRAMES_PER_SECOND = 15
+FRAMES_PER_SECOND = 30
 
 # This is how long to wait after the game is over
 # before returning to the pre-game display.
