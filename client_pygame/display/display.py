@@ -226,12 +226,15 @@ class Display(BaseDisplay):
             image = pygame.image.load(file_path)
             surface.blit(image, rect)
 
-        pct = (obj.get_health() / obj.get_max_health()) * 10
-        pct = int(round(pct))
-        health = ''
-        health = health.ljust(pct, chr(156))
-        health = health.ljust(10)
-        health = '|' + health + '|'
+            pct = (obj.get_health() / obj.get_max_health()) * 10
+            pct = int(round(pct))
+            health = ''
+            health = health.ljust(pct, chr(156))
+            health = health.ljust(10)
+            health = '|' + health + '|'
+        else:
+            health = 'LEVEL UP!'
+
         self.draw_text_center(surface, health, (200, 0, 0),
                               obj.get_x() + 2, obj.get_y() + 3.5,
                               self.font)
