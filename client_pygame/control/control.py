@@ -5,6 +5,7 @@
 
 import pygame
 from client.base_control import *
+from random import randint
 
 class Control(BaseControl):
     """
@@ -141,6 +142,10 @@ class Control(BaseControl):
             self.player_image = 'shooter3.png'
             self.current_key = pygame.K_RIGHT
             engine.set_player_speed_slow()
+
+        if pygame.K_c in newkeys:
+            self.background_color = (randint(0,255), randint(0,255), randint(0,255))
+
         
         if self.current_key not in keys and self.current_key != pygame.K_1:
             engine.set_player_speed_stop()

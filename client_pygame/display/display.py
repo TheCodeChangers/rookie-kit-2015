@@ -8,6 +8,7 @@ from config import *
 from common.event import *
 from client.base_display import BaseDisplay
 
+
 class Display(BaseDisplay):
     """
     This class controls all of the drawing of the screen
@@ -151,7 +152,10 @@ class Display(BaseDisplay):
         # background
         rect = pygame.Rect(0, 0, self.width, self.height)
         surface.fill(self.background_color, rect)
-            
+
+        # Set a random bg color
+        if hasattr(control, 'background_color') and control.background_color != self.background_color:
+            self.background_color = control.background_color
         # draw each object
         objs = engine.get_objects()
         for key in objs:
