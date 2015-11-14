@@ -209,9 +209,18 @@ class Display(BaseDisplay):
         Draws living NPCs.
         """
         if obj.is_alive():
-            color = self.npc_color
             rect = self.obj_to_rect(obj)
-            pygame.draw.rect(surface, color, rect)
+            if obj.get_dx() > 0:
+                npcpng = 'npc3.png'
+            elif obj.get_dx() < 0:
+                npcpng = 'npc4.png'
+            elif obj.get_dy() > 0:
+                npcpng = 'npc1.png'
+            else:
+                npcpng = 'npc2.png'
+            file_path = os.path.join('display', 'images', npcpng)
+            image = pygame.image.load(file_path)
+            surface.blit(image, rect)
         return
         
     def paint_missile(self, surface, engine, control, obj):
