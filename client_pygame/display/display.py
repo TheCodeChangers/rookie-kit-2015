@@ -235,7 +235,7 @@ class Display(BaseDisplay):
             health = health.ljust(10)
             health = '|' + health + '|'
         else:
-            health = 'LEVEL UP!'
+            health = 'XP DROP!'
 
         self.draw_text_center(surface, health, (200, 0, 0),
                               obj.get_x() + 2, obj.get_y() + 3.5,

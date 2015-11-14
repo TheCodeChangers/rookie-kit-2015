@@ -4,6 +4,7 @@
 #
 
 import pygame
+import sys, os
 from client.base_control import *
 from random import randint
 
@@ -183,9 +184,11 @@ class Control(BaseControl):
                 
         if pygame.K_SPACE in newkeys:
             engine.fire_missile()
+            sound = pygame.mixer.Sound(os.path.join ("display", "sounds", "laser.wav"))
+            sound.play()
 
         if pygame.K_i in newkeys:
-            sound = pygame.mixer.Sound("../display/sounds/mis2.wav")
+            sound = pygame.mixer.Sound
             sound.play()
             self.show_info = not self.show_info
 
