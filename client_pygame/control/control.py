@@ -128,25 +128,25 @@ class Control(BaseControl):
         if False == hasattr(self, 'current_key'):
             self.current_key = pygame.K_1
 
-        if pygame.K_UP in newkeys:
+        if pygame.K_UP in newkeys or pygame.K_w in newkeys:
             engine.set_player_direction(270)
             engine.set_missile_direction(270)
             self.player_image = 'shooter2.png'
             self.current_key = pygame.K_UP
             go(self)
-        elif pygame.K_DOWN in newkeys:
+        elif pygame.K_DOWN in newkeys or pygame.K_s in newkeys:
             engine.set_player_direction(90)
             engine.set_missile_direction(90)
             self.player_image = 'shooter1.png'
             self.current_key = pygame.K_DOWN
             go(self)
-        elif pygame.K_LEFT in newkeys:
+        elif pygame.K_LEFT in newkeys or pygame.K_a in newkeys:
             engine.set_player_direction(180)
             engine.set_missile_direction(180)
             self.player_image = 'shooter4.png'
             self.current_key = pygame.K_LEFT
             go(self)
-        elif pygame.K_RIGHT in newkeys:
+        elif pygame.K_RIGHT in newkeys or pygame.K_d in newkeys:
             engine.set_player_direction(0)
             engine.set_missile_direction(0)
             self.player_image = 'shooter3.png'
