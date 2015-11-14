@@ -229,10 +229,10 @@ class Display(BaseDisplay):
         pct = (obj.get_health() / obj.get_max_health()) * 10
         pct = int(round(pct))
         health = ''
-        health = health.ljust(pct, '@')
+        health = health.ljust(pct, chr(156))
         health = health.ljust(10)
         health = '|' + health + '|'
-        self.draw_text_center(surface, health, self.text_color,
+        self.draw_text_center(surface, health, (200, 0, 0),
                               obj.get_x() + 2, obj.get_y() + 3.5,
                               self.font)
         return
@@ -258,10 +258,10 @@ class Display(BaseDisplay):
         pct = (obj.get_health() / obj.get_max_health()) * 10
         pct = int(round(pct))
         health = ''
-        health = health.ljust(pct, '+')
+        health = health.ljust(pct, chr(156))
         health = health.ljust(10)
         health = '|' + health + '|'
-        self.draw_text_center(surface, health, self.text_color,
+        self.draw_text_center(surface, health, (200, 0, 0),
                               obj.get_x() + 2, obj.get_y() + 3.5,
                               self.font)
         if obj.is_alive():
