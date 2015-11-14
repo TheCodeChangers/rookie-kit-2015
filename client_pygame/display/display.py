@@ -90,7 +90,7 @@ class Display(BaseDisplay):
         # There are other fonts available, but they are not
         # the same on every computer.  You can read more about
         # fonts at http://www.pygame.org/docs/ref/font.html
-        self.font_size = 25
+        self.font_size = 15
         self.font = pygame.font.SysFont("Futura",self.font_size)
 
         # Colors are specified as a triple of integers from 0 to 255.
@@ -126,6 +126,9 @@ class Display(BaseDisplay):
         file_path = os.path.join('display', 'images', 'TitlePage.png')
         image = pygame.image.load(file_path)
         surface.blit(image, rect)
+
+        sound_file = os.path.join('sounds', 'Applause.wav')
+        pygame.mixer.Sound(sound_file).play()
 
         return
         
@@ -186,8 +189,8 @@ class Display(BaseDisplay):
         self.paint_game(surface, engine, control)
         
         s = "Game Over (%s wins!)" % (engine.get_winner_name())
-        sound = pygame.mixer.Sound('sounds/Applause.wav')
-        sound.play()
+        sound_file = os.path.join('sounds', 'Applause.wav')
+        pygame.mixer.Sound(sound_file).play()
         self.draw_text_center(surface, s, self.text_color, int(self.width/2), int(self.height/2), self.font)
         return
 
