@@ -127,6 +127,8 @@ class Control(BaseControl):
 
         if False == hasattr(self, 'current_key'):
             self.current_key = pygame.K_1
+        if False == hasattr(self, 'seisure_mode'):
+            self.seisure_mode = False
 
         if pygame.K_UP in newkeys or pygame.K_w in newkeys:
             engine.set_player_direction(270)
@@ -178,9 +180,10 @@ class Control(BaseControl):
             engine.set_player_direction(45)
             engine.set_missile_direction(45)
 
-        if pygame.K_c in newkeys:
+        if pygame.K_c in newkeys or self.seisure_mode:
             self.background_color = (randint(0,255), randint(0,255), randint(0,255))
-
+        if pygame.K_z in newkeys:
+            self.seisure_mode = not self.seisure_mode
         
         if self.current_key not in keys and self.current_key != pygame.K_1:
             engine.set_player_speed_stop()
