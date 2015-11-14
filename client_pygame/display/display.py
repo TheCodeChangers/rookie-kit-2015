@@ -228,17 +228,23 @@ class Display(BaseDisplay):
         Draws living players.
         My player is my opponent are in different colors
         """
+        
         if obj.is_alive():
             rect = self.obj_to_rect(obj)
             if obj.get_oid() == engine.get_player_oid():
                 file_path = os.path.join('display', 'images', control.player_image)
-                image = pygame.image.load(file_path)
-                surface.blit(image, rect)
-            else:
-                file_path = os.path.join('display', 'images', 'enemy1.png')
-                image = pygame.image.load(file_path)
-                surface.blit(image, rect)
-                
+            else: 
+                if obj.get_dx() > 0:
+                    enemyimg = 'enemy1.png'
+                elif obj.get_dx() < 0:
+                    enemyimg = 'enemy2.png'
+                elif obj.get_dy() > 0:
+                    enemyimg = 'enemy3.png'
+                else:
+                    enemyimg = 'enemy4.png'
+                file_path = os.path.join('display', 'images', enemyimg)
+            image = pygame.image.load(file_path)
+            surface.blit(image, rect)
         return
 
     def paint_game_status(self, surface, engine, control):
