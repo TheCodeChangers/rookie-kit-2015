@@ -122,6 +122,10 @@ class Display(BaseDisplay):
         self.draw_text_center(surface, s, self.text_color,
                               self.width/2, self.height/2 + 3*self.font_size/2,
                               self.font)
+        file_path = os.path.join('display', 'images', 'TitlePage.png')
+        image = pygame.image.load(file_path)
+        surface.blit(image, rect)
+
         return
         
     def paint_waiting_for_game(self, surface, engine, control):
