@@ -100,7 +100,7 @@ class Display(BaseDisplay):
         self.player_color     = (0, 255, 0)
         self.opponent_color   = (255, 0, 0)
         self.missile_color    = (0, 255, 255)
-        self.npc_color        = (165, 70, 42)
+        self.npc_color        = (100, 70, 42)
         self.wall_color       = (255, 255, 255)
         self.text_color       = (255, 255, 255)
         self.background_color = (40, 199, 15)
@@ -215,6 +215,8 @@ class Display(BaseDisplay):
         Draws living missiles.
         """
         if obj.is_alive():
+            obj.set_w(1.8)
+            obj.set_h(1.8)
             rect = self.obj_to_rect(obj)
             file_path = os.path.join('display', 'images', 'Energy-Ball.png')
             image = pygame.image.load(file_path)
