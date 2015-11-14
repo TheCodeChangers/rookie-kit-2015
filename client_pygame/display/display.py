@@ -100,10 +100,10 @@ class Display(BaseDisplay):
         self.player_color     = (0, 255, 0)
         self.opponent_color   = (255, 0, 0)
         self.missile_color    = (0, 255, 255)
-        self.npc_color        = (255, 255, 0)
+        self.npc_color        = (165, 70, 42)
         self.wall_color       = (255, 255, 255)
         self.text_color       = (255, 255, 255)
-        self.background_color = (0, 0, 0)
+        self.background_color = (40, 199, 15)
         return
 
     def paint_pregame(self, surface, control):
@@ -215,9 +215,10 @@ class Display(BaseDisplay):
         Draws living missiles.
         """
         if obj.is_alive():
-            color = self.missile_color
             rect = self.obj_to_rect(obj)
-            pygame.draw.rect(surface, color, rect)
+            file_path = os.path.join('display', 'images', 'Energy-Ball.png')
+            image = pygame.image.load(file_path)
+            surface.blit(image, rect)
         return
         
     def paint_player(self, surface, engine, control, obj):
@@ -225,7 +226,6 @@ class Display(BaseDisplay):
         Draws living players.
         My player is my opponent are in different colors
         """
-
         if obj.is_alive():
             rect = self.obj_to_rect(obj)
             if obj.get_oid() == engine.get_player_oid():
@@ -235,6 +235,13 @@ class Display(BaseDisplay):
             else:
                 color = self.opponent_color
                 pygame.draw.rect(surface, color, rect)
+                (x, y) = obj.get_center()
+                x = int( round(x) )
+                y = int( round(y) )
+                missle_range = int( round(obj.get_missile_range()) )
+                pygame.draw.circle(surface, color, (x,y), missle_range, 1)
+                file_path = os.path.join('display', 'images', 'Rocket.png')
+                image = pygame.image.load(file_path)
         return
 
     def paint_game_status(self, surface, engine, control):

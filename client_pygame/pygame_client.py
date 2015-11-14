@@ -24,6 +24,10 @@ class PygameClient(PygameSocketGame):
         self.display = Display(width, height)
         self.control = Control(width, height)
         self.control.player_image = 'shooter3.png'
+        #pygame.mixer.init()
+        #pygame.mixer.music('display/sounds/background.wav')
+        #pygame.mixer.music.play()
+        pygame.mixer.Sound("display/sounds/bac2.wav").play()
         return
     
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):

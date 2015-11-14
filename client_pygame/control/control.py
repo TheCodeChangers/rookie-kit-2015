@@ -168,6 +168,8 @@ class Control(BaseControl):
             engine.fire_missile()
 
         if pygame.K_i in newkeys:
+            sound = pygame.mixer.Sound("../display/sounds/mis2.wav")
+            sound.play()
             self.show_info = not self.show_info
 
         return

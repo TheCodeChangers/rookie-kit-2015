@@ -23,8 +23,8 @@ POST_GAME_WAIT_TIME = 5 # seconds
 
 
 # How wide the window is.  This doesn't change the width of the game.
-WINDOW_WIDTH     = FIELD_WIDTH + 0
+WINDOW_WIDTH       = FIELD_WIDTH + 0
 # How high the status bar at the bottom of the window is.
-STATUS_BAR_HEIGHT  = 80
+STATUS_BAR_HEIGHT  = 60
 # How tall the window is.  This doesn't change the height of the game.
-WINDOW_HEIGHT     = FIELD_HEIGHT + STATUS_BAR_HEIGHT
+WINDOW_HEIGHT      = FIELD_HEIGHT + STATUS_BAR_HEIGHT
