@@ -238,8 +238,7 @@ class Display(BaseDisplay):
                 (x, y) = obj.get_center()
                 x = int( round(x) )
                 y = int( round(y) )
-                missle_range = int( round(obj.get_missile_range()) )
-                pygame.draw.circle(surface, color, (x,y), missle_range, 1)
+                
         return
 
     def paint_game_status(self, surface, engine, control):
