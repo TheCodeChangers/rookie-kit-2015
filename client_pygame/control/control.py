@@ -132,25 +132,28 @@ class Control(BaseControl):
             engine.set_player_direction(270)
             engine.set_missile_direction(270)
             self.player_image = 'shooter2.png'
-            self.current_key = pygame.K_UP
+            if pygame.K_UP in newkeys:
+                self.current_key = pygame.K_UP
+            elif pygame.K_w in newkeys:
+                self.current_key = pygame.K_w
             go(self)
         elif pygame.K_DOWN in newkeys or pygame.K_s in newkeys:
             engine.set_player_direction(90)
             engine.set_missile_direction(90)
             self.player_image = 'shooter1.png'
-            self.current_key = pygame.K_DOWN
+            self.current_key = pygame.K_s
             go(self)
         elif pygame.K_LEFT in newkeys or pygame.K_a in newkeys:
             engine.set_player_direction(180)
             engine.set_missile_direction(180)
             self.player_image = 'shooter4.png'
-            self.current_key = pygame.K_LEFT
+            self.current_key = pygame.K_a
             go(self)
         elif pygame.K_RIGHT in newkeys or pygame.K_d in newkeys:
             engine.set_player_direction(0)
             engine.set_missile_direction(0)
             self.player_image = 'shooter3.png'
-            self.current_key = pygame.K_RIGHT
+            self.current_key = pygame.K_d
             go(self)
 
         if pygame.K_UP in keys and pygame.K_LEFT in keys:
