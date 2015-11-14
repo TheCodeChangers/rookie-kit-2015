@@ -143,6 +143,18 @@ class Control(BaseControl):
             self.current_key = pygame.K_RIGHT
             engine.set_player_speed_slow()
 
+        if pygame.K_UP in keys and pygame.K_LEFT in keys:
+            engine.set_player_direction(225)
+            engine.set_missile_direction(225)
+        elif pygame.K_UP in keys and pygame.K_RIGHT in keys:
+                engine.set_player_direction(315)
+                engine.set_missile_direction(315)
+        elif pygame.K_DOWN in keys and pygame.K_LEFT in keys:
+                engine.set_player_direction(135)
+                engine.set_missile_direction(135)
+        elif pygame.K_DOWN in keys and pygame.K_RIGHT in keys:
+                engine.set_player_direction(45)
+                engine.set_missile_direction(45)
         if pygame.K_c in newkeys:
             self.background_color = (randint(0,255), randint(0,255), randint(0,255))
 

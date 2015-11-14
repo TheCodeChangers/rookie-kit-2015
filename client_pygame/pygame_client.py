@@ -1,6 +1,6 @@
 #
 # You should not make changes to this file
-#
+import os
 import pygame
 import sys
 from config import *
@@ -27,7 +27,8 @@ class PygameClient(PygameSocketGame):
         #pygame.mixer.init()
         #pygame.mixer.music('display/sounds/background.wav')
         #pygame.mixer.music.play()
-        pygame.mixer.Sound("display/sounds/bac2.wav").play()
+        sound_path = os.path.join('display', 'sounds', 'bac2.wav')
+        pygame.mixer.Sound(sound_path).play()
         return
     
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):

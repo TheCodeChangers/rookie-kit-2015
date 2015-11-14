@@ -186,6 +186,8 @@ class Display(BaseDisplay):
         self.paint_game(surface, engine, control)
         
         s = "Game Over (%s wins!)" % (engine.get_winner_name())
+        sound = pygame.mixer.Sound('sounds/Applause.wav')
+        sound.play()
         self.draw_text_center(surface, s, self.text_color, int(self.width/2), int(self.height/2), self.font)
         return
 
@@ -283,6 +285,12 @@ class Display(BaseDisplay):
                 file_path = os.path.join('display', 'images', enemyimg)
             image = pygame.image.load(file_path)
             surface.blit(image, rect)
+            (x, y) = obj.get_center()
+            x = int( round(x) )
+            y = int( round(y) )
+            missle_range = int( round(obj.get_missile_range()) )
+            pygame.draw.circle(surface, (0,0,0), (x,y), missle_range, 1)
+
         return
 
     def paint_game_status(self, surface, engine, control):
