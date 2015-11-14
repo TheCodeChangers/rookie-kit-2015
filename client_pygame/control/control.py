@@ -77,7 +77,7 @@ class Control(BaseControl):
         
         BaseControl.__init__(self, width, height)
         # used to control display of individual item information
-        self.show_info = True
+        self.show_info = False
 
         return
 
@@ -141,33 +141,43 @@ class Control(BaseControl):
             engine.set_player_direction(90)
             engine.set_missile_direction(90)
             self.player_image = 'shooter1.png'
-            self.current_key = pygame.K_s
+            if pygame.K_DOWN in newkeys:
+                self.current_key = pygame.K_DOWN
+            elif pygame.K_s in newkeys:
+                self.current_key = pygame.K_s
             go(self)
         elif pygame.K_LEFT in newkeys or pygame.K_a in newkeys:
             engine.set_player_direction(180)
             engine.set_missile_direction(180)
             self.player_image = 'shooter4.png'
-            self.current_key = pygame.K_a
+            if pygame.K_LEFT in newkeys:
+                self.current_key = pygame.K_LEFT
+            elif pygame.K_a in newkeys:
+                self.current_key = pygame.K_a
             go(self)
         elif pygame.K_RIGHT in newkeys or pygame.K_d in newkeys:
             engine.set_player_direction(0)
             engine.set_missile_direction(0)
             self.player_image = 'shooter3.png'
-            self.current_key = pygame.K_d
+            if pygame.K_RIGHT in newkeys:
+                self.current_key = pygame.K_RIGHT
+            elif pygame.K_d in newkeys:
+                self.current_key = pygame.K_d
             go(self)
 
-        if pygame.K_UP in keys and pygame.K_LEFT in keys:
+        if (pygame.K_UP in keys and pygame.K_LEFT in keys) or (pygame.K_w in keys and pygame.K_a in keys):
             engine.set_player_direction(225)
             engine.set_missile_direction(225)
-        elif pygame.K_UP in keys and pygame.K_RIGHT in keys:
+        elif (pygame.K_UP in keys and pygame.K_RIGHT in keys) or (pygame.K_w in keys and pygame.K_d in keys):
             engine.set_player_direction(315)
             engine.set_missile_direction(315)
-        elif pygame.K_DOWN in keys and pygame.K_LEFT in keys:
+        elif (pygame.K_DOWN in keys and pygame.K_LEFT in keys) or (pygame.K_s in keys and pygame.K_a in keys):
             engine.set_player_direction(135)
             engine.set_missile_direction(135)
-        elif pygame.K_DOWN in keys and pygame.K_RIGHT in keys:
+        elif (pygame.K_DOWN in keys and pygame.K_RIGHT in keys) or (pygame.K_s in keys and pygame.K_d in keys):
             engine.set_player_direction(45)
             engine.set_missile_direction(45)
+
         if pygame.K_c in newkeys:
             self.background_color = (randint(0,255), randint(0,255), randint(0,255))
 
@@ -184,15 +194,15 @@ class Control(BaseControl):
         elif pygame.K_4 in newkeys:
             engine.set_player_speed_fast()
             
-        if pygame.K_q in newkeys:
-            engine.set_missile_range_none()
-        elif pygame.K_w in newkeys:
-            engine.set_missile_range_short()
+        # if pygame.K_q in newkeys:
+        #     engine.set_missile_range_none()
+        # elif pygame.K_w in newkeys:
+        #     engine.set_missile_range_short()
 
-        if pygame.K_a in newkeys:
-            engine.set_missile_power_none()
-        elif pygame.K_s in newkeys:
-            engine.set_missile_power_low()
+        # if pygame.K_a in newkeys:
+        #     engine.set_missile_power_none()
+        # elif pygame.K_s in newkeys:
+        #     engine.set_missile_power_low()
                 
         if pygame.K_SPACE in newkeys or 1 in newbuttons:
             engine.fire_missile()
